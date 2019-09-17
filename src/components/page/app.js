@@ -1,12 +1,10 @@
-import React from 'react'
+import React from 'react';
+import ExempleUI from '../exemple/exempleUI';
 
-export default class App extends React.Component {
-
-    render(){
-        return(
-            <div>
-                Welcome in the React-Apollo-Redux Template
-            </div>
-        )
-    }
-}
+const App = () => (
+    <React.Fragment>
+        App
+        <ExempleUI/>
+    </React.Fragment>
+)
+export default App

@@ -1,18 +1,19 @@
-import 'babel-polyfill';
+import 'core-js';
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
-import React from 'react'
-import ReactDOM from 'react-dom'
-import Router from './router/index.js'
-import { Provider } from 'react-redux'
-import storeFactory from './store/index'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Router from './router/index.js';
+import { Provider } from 'react-redux';
+import storeFactory from './store/index';
 import ApolloClient from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 import { ApolloProvider } from 'react-apollo';
-import * as serviceWorker from './serviceWorker'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import './style/index.css'
+import * as serviceWorker from './serviceWorker';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { ThemeProvider } from 'emotion-theming';
+import { theme } from './theme';
 
 const store = storeFactory() // intialisation du store redux
 
@@ -33,7 +34,9 @@ const createApolloClient = (authToken) => {
 ReactDOM.render(
     <ApolloProvider client={createApolloClient()}>
         <Provider store={store}>
-            <Router />
+            <ThemeProvider theme={theme}>
+                <Router />
+            </ThemeProvider>
         </Provider>
     </ApolloProvider>
     , document.getElementById('root'));
